@@ -110,12 +110,11 @@ static BroadcastManager *sharedMyManager = nil;
 }
 
 +(WOWZBroadcastOrientation)getBroadcastOrientation:(NSString *)orientationString {
-    if ([orientationString isEqualToString:@"landscape"]) {
-        return WOWZBroadcastOrientationAlwaysLandscape;
-    } else if ([orientationString isEqualToString:@"portrait"]) {
-        return WOWZBroadcastOrientationAlwaysPortrait;
-    }
-    
+    //if ([orientationString isEqualToString:@"landscape"]) {
+     //   return WOWZBroadcastOrientationAlwaysLandscape;
+   // } else if ([orientationString isEqualToString:@"portrait"]) {
+   //     return WOWZBroadcastOrientationAlwaysPortrait;
+ //   }
     return WOWZBroadcastOrientationSameAsDevice;
 }
 
