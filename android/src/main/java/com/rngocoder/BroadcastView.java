@@ -15,6 +15,7 @@ import com.wowza.gocoder.sdk.api.devices.WOWZCameraView;
 import com.wowza.gocoder.sdk.api.status.WOWZState;
 import com.wowza.gocoder.sdk.api.status.WOWZStatus;
 import com.wowza.gocoder.sdk.api.status.WOWZStatusCallback;
+import com.wowza.gocoder.sdk.api.configuration.WOWZMediaConfig;
 
 import android.support.v4.view.GestureDetectorCompat;
 import com.wowza.gocoder.sdk.api.devices.WOWZCamera;
@@ -65,7 +66,7 @@ public class BroadcastView extends FrameLayout implements LifecycleEventListener
     private boolean muted = false;
     private int sizePreset;
     protected GestureDetectorCompat mAutoFocusDetector = null;
-    
+
     public BroadcastView(ThemedReactContext context){
         super(context);
 
@@ -76,6 +77,7 @@ public class BroadcastView extends FrameLayout implements LifecycleEventListener
         broadcast = new WOWZBroadcast();
         localContext.addLifecycleEventListener(this);
         cameraView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        cameraView.setScaleMode(WOWZMediaConfig.FILL_VIEW);
         cameraView.getCamera().setTorchOn(false);
         this.addView(cameraView);
     }
@@ -113,7 +115,7 @@ public class BroadcastView extends FrameLayout implements LifecycleEventListener
                 activeCamera.setFocusMode(WOWZCamera.FOCUS_MODE_CONTINUOUS);
         }
     }
-    
+
 
     public void setCameraType(Integer cameraType) {
         this.cameraView.setCamera(cameraType);
@@ -196,14 +198,14 @@ public class BroadcastView extends FrameLayout implements LifecycleEventListener
     public boolean isBroadcasting() {
         return broadcasting;
     }
-    
+
 
     public void setBroadcasting(boolean broadcasting) {
 
         WOWZCamera activeCamera = this.cameraView.getCamera();
         if (activeCamera != null && activeCamera.hasCapability(WOWZCamera.FOCUS_MODE_CONTINUOUS))
             activeCamera.setFocusMode(WOWZCamera.FOCUS_MODE_CONTINUOUS);
-            
+
         if(broadcastConfig == null){
             return;
         }
