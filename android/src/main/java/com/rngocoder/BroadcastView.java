@@ -78,7 +78,7 @@ public class BroadcastView extends FrameLayout implements LifecycleEventListener
         localContext.addLifecycleEventListener(this);
         cameraView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         cameraView.setScaleMode(WOWZMediaConfig.FILL_VIEW);
-        cameraView.getCamera().setTorchOn(false);
+//        cameraView.getCamera().setTorchOn(false);
         this.addView(cameraView);
     }
 
